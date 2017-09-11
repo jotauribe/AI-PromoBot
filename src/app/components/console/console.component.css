@@ -1,0 +1,23 @@
+body{
+  background-image: url(../../../assets/fondo.jpg);
+  background-size: 100vw 100vh;
+  background-attachment: fixed;
+  margin: 0;
+  font-family: monospace;
+}
+form{
+  width: 450px;
+  margin: auto;
+  background: rgba(0,0,0,0.5);
+  padding: 10px 20px;
+  box-sizing: border-box;
+  margin-top: 20px;
+  border-radius: 7px;
+}
+h2{
+  color: 	#FDF5E6;
+  text-align: center;
+  margin: 0;
+  font-size: 30px;
+  margin-bottom: 20px;
+}

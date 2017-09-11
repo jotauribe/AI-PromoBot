@@ -12,10 +12,15 @@ export class SliderComponent implements OnInit {
   promotions: Promotion[];
 
   constructor(private promosService: PromosService) {
-    this.promotions = this.promosService.getPromotions();
+    this.promotions = [];
+    this.promosService.getBestPromo()
+      .then(bestPromo => {
+        this.promotions.push(bestPromo);
+      });
   }
 
   ngOnInit() {
+
   }
 
 }
