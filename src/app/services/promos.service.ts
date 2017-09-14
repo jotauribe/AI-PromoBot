@@ -18,16 +18,40 @@ export class PromosService {
       new Promotion(
         '/assets/images//home/girl1.jpg',
         'Dos por uno',
-        new Shop('La tienda pachangosa', 95.0789, 80.0789)),
+        new Shop('El factor X', 95.0789, 80.0789)),
       new Promotion(
         '/assets/images//home/girl1.jpg',
-        'Dos por uno',
-        new Shop('La tienda pachangosa', 57.0890, 79.0789)),
+        'Tres por uno',
+        new Shop('La tienda mami', 57.0890, 79.0789)),
       new Promotion(
         '/assets/images/promo/promo1.png',
-        'Dos por uno',
+        'Cuatro por uno',
         new Shop('La tienda pachangosa', 50.0890, 80.0789)),
     ];
+  }
+
+  getTheProm(): Promise<Promotion> {
+    return new Promise((resolve) => {
+      const promos =  this.getPromotions();
+      this.geolocationService.getUserLocation()
+        .then(position => {
+          const currentPosition = position;
+          let bestPromo: Promotion = promos[0];
+          let minimunDistance = Number.MAX_VALUE;
+          promos.forEach(p => {
+            const distance = this.getDistanceFromLatLonInKm(
+              bestPromo.shop.latitude,
+              bestPromo.shop.longitude,
+              currentPosition.coords.latitude,
+              currentPosition.coords.longitude);
+            if (minimunDistance > distance) {
+              minimunDistance = distance;
+              bestPromo = p;
+            }
+          });
+          resolve (bestPromo);
+        });
+    });
   }
 
   getBestPromo(): Promise<Promotion> {
@@ -69,6 +93,24 @@ export class PromosService {
       });
       resolve();
     });
+  }
+
+  getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
+    const R = 6371; // Radius of the earth in km
+    const dLat = this.deg2rad(lat2 - lat1);  // deg2rad below
+    const dLon = this.deg2rad(lon2 - lon1);
+    const a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(this.deg2rad(lat1)) * Math.cos(this.deg2rad(lat2)) *
+      Math.sin(dLon / 2) * Math.sin(dLon / 2)
+    ;
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const d = R * c; // Distance in km
+    return d;
+  }
+
+  deg2rad (deg) {
+    return deg * (Math.PI / 180);
   }
 
 }

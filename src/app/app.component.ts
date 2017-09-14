@@ -20,13 +20,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.geolocationService.computeDistanceFromCurrentPosition(48.857, 2.908)
-      .then(distance => {
-        console.log('ESTA ES LA EMPANA AQUELLA ' + distance);
-      });
-    this.promosService.getBestPromo().then(response => {
-
-    });
+    const response = this.promosService.getTheProm().then(console.log);
   }
 
 

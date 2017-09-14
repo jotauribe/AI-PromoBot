@@ -13,7 +13,7 @@ export class SliderComponent implements OnInit {
 
   constructor(private promosService: PromosService) {
     this.promotions = [];
-    this.promosService.getBestPromo()
+    this.promosService.getTheProm()
       .then(bestPromo => {
         this.promotions.push(bestPromo);
       });
