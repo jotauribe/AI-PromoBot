@@ -1,0 +1,6 @@
+<ng2-map center="some-invalid-location"
+          [center]="center">
+  <marker *ngFor="let pos of positions"
+          [position]="pos"
+          (initialized$)="onMarkerInit($event)"></marker>
+</ng2-map>

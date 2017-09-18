@@ -18,15 +18,16 @@ export class PromosService {
       new Promotion(
         'http://images03.spotzot.com/static/September/9132017/150529776207/kohls_170913_vc_01_m.png?aid=5100110509?api_key=mjj111nf579wed09&aff_id=5100110509&dealid=4755384',
         'Muchos descuentos de tu ropa favorita',
-        new Shop('El factor X', 20.4039989, -75.5300293)),
+        new Shop('El factor X', 10.3842203, -75.4699482)),
+
       new Promotion(
         'https://www.advertgallery.com/wp-content/uploads/2016/04/brand-factory-toi-mum-8-4-2016.jpg',
         'Mega promoción GUESS',
-        new Shop('La tienda mami', 10.0790, -75.0589)),
+        new Shop('La tienda mami', 10.3853868, -75.5032847)), // MAMONAL PLAZA
       new Promotion(
         'https://i2.wp.com/www.blackerfriday.com/wp-content/uploads/2015/10/Ann-Taylor-Black-Friday-Ad-Page-12.png',
         'Amor y amistad !50% Descuento ',
-        new Shop('La tienda pachangosa', 50.0990, -70.0789)),
+        new Shop('La tienda pachangosa', 10.424558, -75.546895)), // CENTRO UNO
     ];
   }
 

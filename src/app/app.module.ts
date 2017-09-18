@@ -15,10 +15,13 @@ import { SliderItemComponent } from './components/home/page/slider/slider-item/s
 import {PromosService} from "./services/promos.service";
 import {GeolocationService} from "./services/geolocation.service";
 import { AdComponent } from './components/ad/ad.component';
+import {MapComponent} from "./components/map/map.component";
+import {Ng2MapModule} from "ng2-map";
 
 const routes: Routes = [
   { path: '' , component: HomeComponent },
-  { path: 'console' , component: ConsoleComponent }
+  { path: 'console' , component: ConsoleComponent },
+  { path: 'map', component: MapComponent }
 ];
 
 @NgModule({
@@ -30,12 +33,14 @@ const routes: Routes = [
     PromotionComponent,
     SliderComponent,
     SliderItemComponent,
-    AdComponent
+    AdComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot( routes ),
+    Ng2MapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyCcl6a8q19fNlugpAAxJA2V6V8H6B2ZBcc'}),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCcl6a8q19fNlugpAAxJA2V6V8H6B2ZBcc',
       libraries: ['geometry']
