@@ -16,7 +16,8 @@ export class GeolocationService {
       this.getUserLocation()
         .then( position => {
           this.latitude = position.coords.latitude;
-          this.longitude = position.coords.latitude;
+          this.longitude = position.coords.longitude;
+          console.log('USER LOCATION: ' + this.latitude + ', ' + longitude);
           // distance = this.init(latitude, longitude);
           this.init(latitude, longitude)
             .then(distance => {
@@ -55,7 +56,15 @@ export class GeolocationService {
           const distance = google.maps.geometry.spherical.computeDistanceBetween(
             currentLatLng,
             anotherLatLng);
-          console.log('distancia calculada bien ' + distance + 'KM');
+          console.log(
+            'Distancia calculada desde '
+            + currentLatLng
+            + ' hasta '
+            + anotherLatLng
+            + '= '
+            +  distance
+            + 'KM'
+          );
           resolve(distance);
         });
     });

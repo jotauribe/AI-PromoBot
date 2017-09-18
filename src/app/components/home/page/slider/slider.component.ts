@@ -11,11 +11,15 @@ export class SliderComponent implements OnInit {
 
   promotions: Promotion[];
 
+  bestPromo: Promotion;
+
   constructor(private promosService: PromosService) {
     this.promotions = [];
     this.promosService.getBestPromo()
       .then(bestPromo => {
         this.promotions.push(bestPromo);
+        this.bestPromo = bestPromo;
+        console.log('BEST PROMO Description' + this.bestPromo.description);
       });
   }
 

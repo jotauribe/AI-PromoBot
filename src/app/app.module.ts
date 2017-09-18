@@ -14,6 +14,7 @@ import { SliderComponent } from './components/home/page/slider/slider.component'
 import { SliderItemComponent } from './components/home/page/slider/slider-item/slider-item.component';
 import {PromosService} from "./services/promos.service";
 import {GeolocationService} from "./services/geolocation.service";
+import { AdComponent } from './components/ad/ad.component';
 
 const routes: Routes = [
   { path: '' , component: HomeComponent },
@@ -28,7 +29,8 @@ const routes: Routes = [
     PageComponent,
     PromotionComponent,
     SliderComponent,
-    SliderItemComponent
+    SliderItemComponent,
+    AdComponent
   ],
   imports: [
     BrowserModule,

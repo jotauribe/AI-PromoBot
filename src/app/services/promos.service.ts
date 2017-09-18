@@ -16,17 +16,17 @@ export class PromosService {
   getPromotions(): Promotion[] {
     return [
       new Promotion(
-        '/assets/images//home/girl1.jpg',
-        'Dos por uno',
-        new Shop('El factor X', 95.0789, 80.0789)),
+        'http://images03.spotzot.com/static/September/9132017/150529776207/kohls_170913_vc_01_m.png?aid=5100110509?api_key=mjj111nf579wed09&aff_id=5100110509&dealid=4755384',
+        'Muchos descuentos de tu ropa favorita',
+        new Shop('El factor X', 20.4039989, -75.5300293)),
       new Promotion(
-        '/assets/images//home/girl1.jpg',
-        'Tres por uno',
-        new Shop('La tienda mami', 57.0890, 79.0789)),
+        'https://www.advertgallery.com/wp-content/uploads/2016/04/brand-factory-toi-mum-8-4-2016.jpg',
+        'Mega promoción GUESS',
+        new Shop('La tienda mami', 10.0790, -75.0589)),
       new Promotion(
-        '/assets/images/promo/promo1.png',
-        'Cuatro por uno',
-        new Shop('La tienda pachangosa', 50.0890, 80.0789)),
+        'https://i2.wp.com/www.blackerfriday.com/wp-content/uploads/2015/10/Ann-Taylor-Black-Friday-Ad-Page-12.png',
+        'Amor y amistad !50% Descuento ',
+        new Shop('La tienda pachangosa', 50.0990, -70.0789)),
     ];
   }
 
@@ -59,8 +59,8 @@ export class PromosService {
       this.findClosestPromo(this.getPromotions())
         .then(distance => {
           setTimeout( () => {
-            console.log('La distancia más corta :' + this.minDistance);
-            console.log('La mejor promo :' + this.bestPromo.imageURL);
+            // console.log('La distancia más corta :' + this.minDistance);
+            // console.log('Best Promo name ' + this.bestPromo.description);
             resolve(this.bestPromo);
           }, 1000);
       });
@@ -83,11 +83,9 @@ export class PromosService {
       promos.forEach(promo => {
           this.calculate(promo)
             .then( distance => {
-              console.log('prueba' + distance);
               if (this.minDistance > distance) {
                 this.minDistance = distance;
                 this.bestPromo = promo;
-                // console.log('this ' + this.minDistance);
               }
             });
       });

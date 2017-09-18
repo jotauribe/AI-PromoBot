@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const response = this.promosService.getTheProm().then(console.log);
+    // const response = this.promosService.getTheProm().then(console.log);
   }
 
 
